@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApplication1.Models.Book>
+
+@{
+    ViewBag.Title = "ShowAll";
+}
+
+<h2>ShowAll</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add_Book")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Update", new { isbn = item.ISBN }) |
+                @Html.ActionLink("Delete", "Delete", new { isbn = item.ISBN })
+            </td>
+        </tr>
+    }
+
+</table>
